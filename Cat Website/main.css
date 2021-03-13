@@ -1,0 +1,54 @@
+nav, footer, nav a, footer a {
+    background-color: #133854;
+    color: white;
+    font-size: 20pt;
+}
+#coname{
+    position: absolute;
+}
+        
+nav {
+    text-align: center;
+    padding: 18px;
+}     
+
+section {
+    font-size: 16pt;
+}
+
+section img {
+    height: 200px;
+}
+        
+footer {
+    text-align: right;
+    padding: 18px;
+}
+footer img {
+    height: 50px;
+    padding-right: 10px;
+    float: left;
+}
+address {
+    font-style: normal;
+}
+.rightfloater {
+    float: right;
+    padding: 0 0 20px 20px;
+}
+.leftfloater {
+    float: left;
+    padding: 0 20px 20px 0;
+}
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    width: 14%;
+    border: 1px solid black;
+    text-align: center;
+}   
+div.a {
+    text-align: center;
+  }

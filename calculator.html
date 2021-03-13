@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="William Paradis-Gregson">
+    <meta name="email" content="para0090@algonquinlive.com">
+    <style>
+        body{
+            background-color: grey;
+        }
+        .display{
+            background-color: orange;
+            text-align: right;
+            padding-right: 7px;
+            width: 113px;
+        }
+        button {
+            width: 30px;
+            height: 30px;
+            border-collapse: collapse;
+            }
+    </style>
+    <title>Very Simple Calculator</title>
+</head>
+<body>
+    <div class="calculator" >
+    
+        <div class="display" id="awnser">
+            0
+        </div>
+    
+        <div class="keypad">
+            <button onclick="press(7);">7</button><button onclick="press(8);">8</button><button onclick="press(9);">9</button><button onclick="operator('-');">-</button><br>
+            <button onclick="press(4);">4</button><button onclick="press(5);">5</button><button onclick="press(6);">6</button><button onclick="operator('/');">/</button><br>
+            <button onclick="press(1);">1</button><button onclick="press(2);">2</button><button onclick="press(3);">3</button><button onclick="operator('*');">X</button><br>
+            <button onclick="press(0);">0</button><button onclick="clearButton();">C</button><button onclick="operator('=');">=</button><button onclick="operator('+');">+</button>
+        </div>
+    
+    </div>
+    <script>
+        let savedNumber=0;
+        let storedOp=0;
+        let Operation = 0;
+        let dis=0;
+
+        function press(pressed){
+            //Check if a operator is currently stored to know we need to make a new number
+
+            if (storedOp==1){
+                document.getElementById("awnser").innerText=0;
+                storeOp=0;
+            }
+            //Math to set up and display current number
+            dis = document.getElementById("awnser").innerText * 10 + pressed;
+            document.getElementById("awnser").innerText = dis;        
+        }
+
+        function operator(op){
+            
+            //Check if a operator is already stored
+            if (storedOp==1){
+                //Check which operator it was and use it to claculate and store current number
+                if (Operation == 1) {savedNumber= +savedNumber * +dis};
+                if (Operation == 2) {savedNumber= +savedNumber / +dis};
+                if (Operation == 3) {savedNumber= +savedNumber + +dis};
+                if (Operation == 4) {savedNumber= +savedNumber - +dis};
+            }else{
+                savedNumber=dis
+            }
+            //Check which operator is being pressed and stores it.
+            if (op=="*") { Operation = 1, storedOp=1};
+            if (op=="/") { Operation = 2, storedOp=1};
+            if (op=="+") { Operation = 3, storedOp=1};
+            if (op=="-") { Operation = 4, storedOp=1}; 
+
+            //Display current total
+            document.getElementById("awnser").innerText= savedNumber;
+
+            //
+            if (op=="="){
+                savedNumber=0;
+                Operation = 0;
+                dis=0;
+                storedOp=1;
+            }
+        }
+
+        function clearButton(){
+            savedNumber=0;
+            Operation = 0;
+            dis=0;
+            storedOp=0;
+            document.getElementById("awnser").innerText= 0;
+        }     
+    </script>
+</body>
+</html>
